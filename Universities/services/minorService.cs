@@ -17,7 +17,7 @@ namespace Universities.services
         public async Task<List<dropdown>> getUniversites()
         {
             List<dropdown> dropdownList = new List<dropdown>();
-            var lst = await this.ilookuprepositry.retriveLookupByMajor(1);
+            var lst = await this.ilookuprepositry.retriveLookupByMajor(5);
 
             if (lst != null)
             {
@@ -27,6 +27,30 @@ namespace Universities.services
             return dropdownList;
         }
         public async Task<List<dropdown>> getMajores()
+        {
+            List<dropdown> dropdownList = new List<dropdown>();
+            var lst = await this.ilookuprepositry.retriveLookupByMajor(2);
+
+            if (lst != null)
+            {
+                lst.ForEach(l => dropdownList.Add(new dropdown() { id = l.minorid, name = l.descs }));
+            }
+
+            return dropdownList;
+        }
+        public async Task<List<dropdown>> getCollege()
+        {
+            List<dropdown> dropdownList = new List<dropdown>();
+            var lst = await this.ilookuprepositry.retriveLookupByMajor(1);
+
+            if (lst != null)
+            {
+                lst.ForEach(l => dropdownList.Add(new dropdown() { id = l.minorid, name = l.descs }));
+            }
+
+            return dropdownList;
+        }
+        public async Task<List<dropdown>> getNationality()
         {
             List<dropdown> dropdownList = new List<dropdown>();
             var lst = await this.ilookuprepositry.retriveLookupByMajor(3);

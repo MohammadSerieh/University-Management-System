@@ -13,6 +13,9 @@ namespace Universities.models
 
 
         public virtual DbSet<CommonZakat_MinorLookUpTable> CommonZakat_MinorLookUpTable { get; set; }
+        public virtual DbSet<UniversityApplicationReserve> UniversityApplicationReserve { get; set; }
+        public virtual DbSet<UniAppCoursesReserve> UniAppCoursesReserve { get; set; }
+
 
         public universityDBContext(DbContextOptions<universityDBContext> options) : base(options)
         {

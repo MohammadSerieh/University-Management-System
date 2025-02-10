@@ -15,7 +15,9 @@ namespace Universities.Repositry
 
         public async Task<List<CommonZakat_MinorLookUpTable>> retriveLookupByMajor(int majorID)
         {
-            return await this.dBContext.Set<CommonZakat_MinorLookUpTable>().Where(x => x.majorid == majorID).ToListAsync();
+            return await this.dBContext.Set<CommonZakat_MinorLookUpTable>()
+                .Where(x => x.majorid == majorID)
+                .ToListAsync();
         }
 
         public async Task<CommonZakat_MinorLookUpTable?> getbyid(int minorid)

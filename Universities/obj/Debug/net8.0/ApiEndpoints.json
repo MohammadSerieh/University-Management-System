@@ -16,9 +16,87 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Universities.Controllers.ApplicationsController",
+    "Method": "AddOrUpdateApplication",
+    "RelativePath": "api/AddOrUpdateApplication",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "Universities.models.dto.ApplicationsDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Universities.Controllers.minorController",
+    "Method": "DeleteMinor",
+    "RelativePath": "api/deleteMinor/{minorid}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "minorid",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Universities.Controllers.minorController",
+    "Method": "GetCollege",
+    "RelativePath": "api/getCollege",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Universities.Controllers.minorController",
+    "Method": "GetNationality",
+    "RelativePath": "api/GetNationality",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Universities.Controllers.minorController",
     "Method": "GetUniversity",
     "RelativePath": "api/GetUniversity",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Universities.Controllers.ApplicationsController",
+    "Method": "DeleteApplication",
+    "RelativePath": "deleteApplication",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "appno",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Universities.Controllers.ApplicationsController",
+    "Method": "GetApplications",
+    "RelativePath": "getApplications",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,

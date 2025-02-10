@@ -8,7 +8,6 @@ using Universities.services;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -31,6 +30,8 @@ builder.Services.AddDbContext<universityDBContext>(option =>
 
 builder.Services.AddScoped<Ilookuprepositry, lookuprepositry>();
 builder.Services.AddScoped<IminorService, minorService>();
+builder.Services.AddScoped<IApplicationsRepository, ApplicationsRepository> ();
+builder.Services.AddScoped<IApplicationsServices, ApplicationsServices> ();
 
 builder.Services.AddMvcCore().AddAuthorization().AddJsonOptions(options =>
 {

@@ -5,7 +5,96 @@
     "version": "1.0"
   },
   "paths": {
+    "/getApplications": {
+      "get": {
+        "tags": [
+          "Applications"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/AddOrUpdateApplication": {
+      "post": {
+        "tags": [
+          "Applications"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ApplicationsDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ApplicationsDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ApplicationsDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/deleteApplication": {
+      "delete": {
+        "tags": [
+          "Applications"
+        ],
+        "parameters": [
+          {
+            "name": "appno",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/GetUniversity": {
+      "get": {
+        "tags": [
+          "minor"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/GetNationality": {
+      "get": {
+        "tags": [
+          "minor"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/getCollege": {
       "get": {
         "tags": [
           "minor"
@@ -41,6 +130,29 @@
             }
           }
         },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/deleteMinor/{minorid}": {
+      "delete": {
+        "tags": [
+          "minor"
+        ],
+        "parameters": [
+          {
+            "name": "minorid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -90,6 +202,87 @@
   },
   "components": {
     "schemas": {
+      "ApplicationsDto": {
+        "type": "object",
+        "properties": {
+          "applicationNumber": {
+            "type": "number",
+            "format": "double"
+          },
+          "applicationType": {
+            "type": "boolean"
+          },
+          "fullName": {
+            "type": "string",
+            "nullable": true
+          },
+          "fullNameEn": {
+            "type": "string",
+            "nullable": true
+          },
+          "appID": {
+            "type": "string",
+            "nullable": true
+          },
+          "universityId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "universityNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "collegeId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "majorId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "semesterGPA": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "overallGPA": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "highSchoolScore": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "highSchoolGraduationDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "universityGrantID": {
+            "type": "string",
+            "nullable": true
+          },
+          "universityGrantDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "grantRateLimit": {
+            "type": "number",
+            "format": "double"
+          },
+          "nationalityCategory": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "WeatherForecast": {
         "type": "object",
         "properties": {

@@ -8,5 +8,7 @@ namespace Universities.Interfaces
         Task deletelookup(int minorid);
         Task<List<dropdown>> getMajores();
         Task<List<dropdown>> getUniversites();
+        Task<List<dropdown>> getCollege();
+        Task<List<dropdown>> getNationality();
     }
 }

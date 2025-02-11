@@ -38,10 +38,36 @@ namespace Universities.services
 
             return dropdownList;
         }
+
+        public async Task<List<dropdown>> getCourse()
+        {
+            List<dropdown> dropdownList = new List<dropdown>();
+            var lst = await this.ilookuprepositry.retriveLookupByMajor(4);
+
+            if (lst != null)
+            {
+                lst.ForEach(l => dropdownList.Add(new dropdown() { id = l.minorid, name = l.descs }));
+            }
+
+            return dropdownList;
+        }
+
         public async Task<List<dropdown>> getCollege()
         {
             List<dropdown> dropdownList = new List<dropdown>();
             var lst = await this.ilookuprepositry.retriveLookupByMajor(1);
+
+            if (lst != null)
+            {
+                lst.ForEach(l => dropdownList.Add(new dropdown() { id = l.minorid, name = l.descs }));
+            }
+
+            return dropdownList;
+        }
+        public async Task<List<dropdown>> getMajor()
+        {
+            List<dropdown> dropdownList = new List<dropdown>();
+            var lst = await this.ilookuprepositry.retriveLookupByMajor(2);
 
             if (lst != null)
             {

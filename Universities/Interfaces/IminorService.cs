@@ -10,5 +10,7 @@ namespace Universities.Interfaces
         Task<List<dropdown>> getUniversites();
         Task<List<dropdown>> getCollege();
         Task<List<dropdown>> getNationality();
+        Task<List<dropdown>> getMajor();
+        Task<List<dropdown>> getCourse();
     }
 }

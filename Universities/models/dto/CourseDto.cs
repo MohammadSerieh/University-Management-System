@@ -1,6 +1,6 @@
-﻿namespace Universities.Entities
+﻿namespace Universities.models.dto
 {
-    public class UniAppCoursesReserve
+    public class CourseDto
     {
         public int UniAppCoursesID { get; set; }
         public decimal Appno { get; set; }
@@ -13,9 +13,5 @@
         public string? MimeType { get; set; }
         public long? Size { get; set; }
         public DateTime? UploadDate { get; set; }
-
-        public virtual UniversityApplicationReserve? UniversityApplicationReserve_Appno_nav { get; set; }
-        public virtual CommonZakat_MinorLookUpTable? CommonZakat_MinorLookUpTable_CourseID_nav { get; set; }
-
     }
 }

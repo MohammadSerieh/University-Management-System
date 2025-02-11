@@ -70,7 +70,62 @@
         }
       }
     },
+    "/api/addCourse": {
+      "post": {
+        "tags": [
+          "Courses"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CourseDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CourseDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CourseDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/GetUniversity": {
+      "get": {
+        "tags": [
+          "minor"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/GetCourse": {
+      "get": {
+        "tags": [
+          "minor"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/GetMajor": {
       "get": {
         "tags": [
           "minor"
@@ -137,7 +192,7 @@
         }
       }
     },
-    "/api/deleteMinor/{minorid}": {
+    "/api/deleteMinor": {
       "delete": {
         "tags": [
           "minor"
@@ -145,8 +200,7 @@
         "parameters": [
           {
             "name": "minorid",
-            "in": "path",
-            "required": true,
+            "in": "query",
             "schema": {
               "type": "integer",
               "format": "int32"
@@ -278,6 +332,59 @@
           "nationalityCategory": {
             "type": "integer",
             "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CourseDto": {
+        "type": "object",
+        "properties": {
+          "uniAppCoursesID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "appno": {
+            "type": "number",
+            "format": "double"
+          },
+          "courseID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "courseCenterID": {
+            "type": "string",
+            "nullable": true
+          },
+          "courseLocation": {
+            "type": "string",
+            "nullable": true
+          },
+          "courseDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "courseAtt": {
+            "type": "string",
+            "format": "byte",
+            "nullable": true
+          },
+          "documentName": {
+            "type": "string",
+            "nullable": true
+          },
+          "mimeType": {
+            "type": "string",
+            "nullable": true
+          },
+          "size": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "uploadDate": {
+            "type": "string",
+            "format": "date-time",
             "nullable": true
           }
         },

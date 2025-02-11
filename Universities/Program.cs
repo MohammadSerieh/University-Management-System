@@ -32,6 +32,8 @@ builder.Services.AddScoped<Ilookuprepositry, lookuprepositry>();
 builder.Services.AddScoped<IminorService, minorService>();
 builder.Services.AddScoped<IApplicationsRepository, ApplicationsRepository> ();
 builder.Services.AddScoped<IApplicationsServices, ApplicationsServices> ();
+builder.Services.AddScoped<ICoursesRepository, CoursesRepository>();
+builder.Services.AddScoped<ICoursesService, CoursesService>();
 
 builder.Services.AddMvcCore().AddAuthorization().AddJsonOptions(options =>
 {

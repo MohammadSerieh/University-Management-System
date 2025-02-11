@@ -21,6 +21,20 @@ namespace Universities.Controllers
            return  Ok( await this.service.getUniversites());
         }
 
+        [Route("api/GetCourse")]
+        [HttpGet]
+        public async Task<IActionResult> GetCourse()
+        {
+            return Ok(await this.service.getCourse());
+        }
+
+        [Route("api/GetMajor")]
+        [HttpGet]
+        public async Task<IActionResult> GetMajor()
+        {
+            return Ok(await this.service.getMajor());
+        }
+
         [Route("api/GetNationality")]
         [HttpGet]
         public async Task<IActionResult> GetNationality()
@@ -43,7 +57,7 @@ namespace Universities.Controllers
         }
 
         
-        [Route("api/deleteMinor/{minorid}")]
+        [Route("api/deleteMinor")]
         [HttpDelete]
         public async Task<IActionResult> DeleteMinor(int minorid)
         {

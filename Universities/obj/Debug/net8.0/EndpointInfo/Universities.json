@@ -70,7 +70,7 @@
         }
       }
     },
-    "/api/addCourse": {
+    "/addOrUpdate": {
       "post": {
         "tags": [
           "Courses"
@@ -94,6 +94,40 @@
             }
           }
         },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/DeteleCourse": {
+      "delete": {
+        "tags": [
+          "Courses"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/GetCourses": {
+      "get": {
+        "tags": [
+          "Courses"
+        ],
         "responses": {
           "200": {
             "description": "OK"

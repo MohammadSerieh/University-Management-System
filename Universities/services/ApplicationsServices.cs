@@ -8,9 +8,12 @@ namespace Universities.services
     public class ApplicationsServices : IApplicationsServices
     {
         private readonly IApplicationsRepository iapplicationrepositry;
-        public ApplicationsServices(IApplicationsRepository apprepo)
+        private readonly Ilookuprepositry ilookuprepositry; // Added Lookup Repository
+
+        public ApplicationsServices(IApplicationsRepository apprepo, Ilookuprepositry lookuprepo)
         {
             this.iapplicationrepositry = apprepo;
+            this.ilookuprepositry = lookuprepo; // Injected Lookup Repository
         }
 
         public async Task<List<ApplicationsDto>> getApplications()
@@ -65,10 +68,16 @@ namespace Universities.services
             await this.iapplicationrepositry.AddOrUpdateApplication(application);
         }
 
-        
         public async Task<bool> deleteApplication(int appno)
         {
             return await iapplicationrepositry.deleteApplication(appno);
         }
+
+        public async Task<List<UniversityApplicationSummaryDto>> GetUniversityDataAsync()
+        {
+            return await this.ilookuprepositry.GetUniversityDataAsync();
+        }
+
+
     }
 }

@@ -114,6 +114,16 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Universities.Controllers.minorController",
+    "Method": "GetUniversityData",
+    "RelativePath": "api/GetUniversityData",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Universities.Controllers.ApplicationsController",
     "Method": "DeleteApplication",
     "RelativePath": "deleteApplication",

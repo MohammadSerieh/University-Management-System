@@ -2,6 +2,7 @@
 using Universities.Entities;
 using Universities.Interfaces;
 using Universities.models;
+using Universities.models.dto;
 
 namespace Universities.Repositry
 {
@@ -67,7 +68,34 @@ namespace Universities.Repositry
             await SaveChanges();
         }
 
+        public async Task<List<UniversityApplicationSummaryDto>> GetUniversityDataAsync()
+        {
+            var query = await (from application in dBContext.UniversityApplicationReserve
+                               join university in dBContext.CommonZakat_MinorLookUpTable
+                                   on application.UniID equals university.minorid
+                                   into uniGroup
+                               from university in uniGroup.DefaultIfEmpty()
+                               where university.majorid == 5
 
+                               join major in dBContext.CommonZakat_MinorLookUpTable
+                                   on application.UniMajor equals major.minorid
+                                   into majorGroup
+                               from major in majorGroup.DefaultIfEmpty()
+                               where major.majorid == 2
+
+                               group application by new { UniversityName = university.descs, MajorName = major.descs } into grouped
+                               select new UniversityApplicationSummaryDto
+                               {
+                                   University = grouped.Key.UniversityName,
+                                   Major = grouped.Key.MajorName,
+                                   HighestCommulativeRate = grouped.Max(a => a.CommulativeRate),
+                                   LowestCommulativeRate = grouped.Min(a => a.CommulativeRate)
+                               })
+                               .OrderByDescending(a => a.HighestCommulativeRate)
+                               .ToListAsync();
+
+            return query;
+        }
 
         private async Task SaveChanges()
         {

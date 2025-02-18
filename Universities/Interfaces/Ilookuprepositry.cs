@@ -1,4 +1,5 @@
 ﻿using Universities.Entities;
+using Universities.models.dto;
 
 namespace Universities.Interfaces
 {
@@ -10,5 +11,6 @@ namespace Universities.Interfaces
         Task<List<CommonZakat_MinorLookUpTable>> retriveLookupByMajor(int majorID);
         Task<CommonZakat_MinorLookUpTable> updateLookup(int minorid, string descs);
         Task<CommonZakat_MinorLookUpTable> updateLookup(CommonZakat_MinorLookUpTable obj);
+        Task<List<UniversityApplicationSummaryDto>> GetUniversityDataAsync();
     }
 }

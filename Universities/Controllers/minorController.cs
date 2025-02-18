@@ -9,10 +9,13 @@ namespace Universities.Controllers
     [ApiController]
     public class minorController : ControllerBase
     {
-        private readonly IminorService service ;
-        public minorController(IminorService service)
+        private readonly IminorService service;
+        private readonly IApplicationsServices applicationsServices; // Added Applications Services
+
+        public minorController(IminorService service, IApplicationsServices applicationsServices)
         {
             this.service = service;
+            this.applicationsServices = applicationsServices; // Injected Applications Service
         }
 
         [Route("api/GetUniversity")]
@@ -70,6 +73,15 @@ namespace Universities.Controllers
             {
                 return NotFound(new { message = ex.Message });
             }
+
+        }
+
+        [Route("api/GetUniversityData")]
+        [HttpGet]
+        public async Task<IActionResult> GetUniversityData()
+        {
+            var result = await applicationsServices.GetUniversityDataAsync();
+            return Ok(result);
         }
     }
 }

@@ -70,29 +70,57 @@ namespace Universities.Repositry
 
         public async Task<List<UniversityApplicationSummaryDto>> GetUniversityDataAsync()
         {
-            var query = await (from application in dBContext.UniversityApplicationReserve
-                               join university in dBContext.CommonZakat_MinorLookUpTable
-                                   on application.UniID equals university.minorid
-                                   into uniGroup
-                               from university in uniGroup.DefaultIfEmpty()
-                               where university.majorid == 5
+            var query = await (
+                from application in dBContext.UniversityApplicationReserve
+                join university in dBContext.CommonZakat_MinorLookUpTable
+                    on application.UniID equals university.minorid
+                    into uniGroup
+                from university in uniGroup.DefaultIfEmpty()
+                where university.majorid == 5
 
-                               join major in dBContext.CommonZakat_MinorLookUpTable
-                                   on application.UniMajor equals major.minorid
-                                   into majorGroup
-                               from major in majorGroup.DefaultIfEmpty()
-                               where major.majorid == 2
+                join major in dBContext.CommonZakat_MinorLookUpTable
+                    on application.UniMajor equals major.minorid
+                    into majorGroup
+                from major in majorGroup.DefaultIfEmpty()
+                where major.majorid == 2
 
-                               group application by new { UniversityName = university.descs, MajorName = major.descs } into grouped
-                               select new UniversityApplicationSummaryDto
-                               {
-                                   University = grouped.Key.UniversityName,
-                                   Major = grouped.Key.MajorName,
-                                   HighestCommulativeRate = grouped.Max(a => a.CommulativeRate),
-                                   LowestCommulativeRate = grouped.Min(a => a.CommulativeRate)
-                               })
-                               .OrderByDescending(a => a.HighestCommulativeRate)
-                               .ToListAsync();
+                group application by new { UniversityName = university.descs, MajorName = major.descs } into grouped
+                select new UniversityApplicationSummaryDto
+                {
+                    University = grouped.Key.UniversityName,
+                    Major = grouped.Key.MajorName,
+                    HighestCommulativeRate = grouped.Max(a => a.CommulativeRate),
+                    LowestCommulativeRate = grouped.Min(a => a.CommulativeRate)
+                })
+                  .OrderByDescending(a => a.HighestCommulativeRate)
+                  .ToListAsync();
+
+            return query;
+        }
+
+        public async Task<List<UniversityCollegeStatsDto>> GetUniCollegeStats()
+        {
+            var query = await (
+                from application in dBContext.UniversityApplicationReserve
+                join university in dBContext.CommonZakat_MinorLookUpTable
+                    on application.UniID equals university.minorid
+                where university.majorid == 5 // Universities
+
+                join college in dBContext.CommonZakat_MinorLookUpTable
+                    on application.UniCollege equals college.minorid into collegeGroup
+                from college in collegeGroup.DefaultIfEmpty()
+                where college.majorid == 1 // Colleges
+
+                group application by new { UniversityName = university.descs, CollegeName = college.descs } into grouped
+                select new UniversityCollegeStatsDto
+                {
+                    University = grouped.Key.UniversityName,
+                    College = grouped.Key.CollegeName,
+                    NumberOfStudents = grouped.Count(),
+                    AvgCommulativeRate = grouped.Average(a => a.CommulativeRate)
+                })
+                .OrderByDescending(a => a.NumberOfStudents)
+                .ToListAsync();
 
             return query;
         }

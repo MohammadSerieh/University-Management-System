@@ -9,6 +9,6 @@ namespace Universities.Interfaces
 
         Task<bool> deleteApplication(int appno);
         Task AddOrUpdateApplication(ApplicationsDto dto);
-        Task<List<UniversityApplicationSummaryDto>> GetUniversityDataAsync();
+        
     }
 }

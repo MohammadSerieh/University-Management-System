@@ -40,6 +40,14 @@ builder.Services.AddMvcCore().AddAuthorization().AddJsonOptions(options =>
     options.JsonSerializerOptions.WriteIndented = true;
 });
 
+// Add CORS policy
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAngular",
+        policy => policy.WithOrigins("http://localhost:4200") // Angular URL
+                        .AllowAnyMethod()
+                        .AllowAnyHeader());
+});
 
 var app = builder.Build();
 
@@ -63,6 +71,7 @@ using (var serviceScope = app.Services
 
 app.UseHttpsRedirection();
 
+app.UseCors("AllowAngular"); // Enable CORS
 app.UseAuthorization();
 
 app.MapControllers();

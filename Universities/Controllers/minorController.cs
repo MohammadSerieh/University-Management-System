@@ -80,7 +80,15 @@ namespace Universities.Controllers
         [HttpGet]
         public async Task<IActionResult> GetUniversityData()
         {
-            var result = await applicationsServices.GetUniversityDataAsync();
+            var result = await this.service.GetUniversityDataAsync();
+            return Ok(result);
+        }
+
+        [Route("api/GetUniColStat")]
+        [HttpGet]
+        public async Task<IActionResult> GetUniColStat()
+        {
+            var result = await this.service.getUniCollegeStats();
             return Ok(result);
         }
     }

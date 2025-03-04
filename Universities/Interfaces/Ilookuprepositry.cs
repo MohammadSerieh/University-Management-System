@@ -12,5 +12,7 @@ namespace Universities.Interfaces
         Task<CommonZakat_MinorLookUpTable> updateLookup(int minorid, string descs);
         Task<CommonZakat_MinorLookUpTable> updateLookup(CommonZakat_MinorLookUpTable obj);
         Task<List<UniversityApplicationSummaryDto>> GetUniversityDataAsync();
+        Task<List<UniversityCollegeStatsDto>> GetUniCollegeStats();
     }
+
 }

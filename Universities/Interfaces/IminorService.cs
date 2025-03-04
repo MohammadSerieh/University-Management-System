@@ -12,5 +12,8 @@ namespace Universities.Interfaces
         Task<List<dropdown>> getNationality();
         Task<List<dropdown>> getMajor();
         Task<List<dropdown>> getCourse();
+        Task<List<UniversityApplicationSummaryDto>> GetUniversityDataAsync();
+        Task<List<UniversityCollegeStatsDto>> getUniCollegeStats();
+
     }
 }

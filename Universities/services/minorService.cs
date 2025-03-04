@@ -118,6 +118,15 @@ namespace Universities.services
 
 
         }
+        public async Task<List<UniversityApplicationSummaryDto>> GetUniversityDataAsync()
+        {
+            return await this.ilookuprepositry.GetUniversityDataAsync();
+        }
+
+        public async Task<List<UniversityCollegeStatsDto>> getUniCollegeStats()
+        {
+            return await this.ilookuprepositry.GetUniCollegeStats();
+        }
 
     }
 }

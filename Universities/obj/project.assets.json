@@ -4719,11 +4719,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\repos\\Universities\\Universities\\Universities.csproj",
+      "projectUniqueName": "E:\\Projects\\Universities\\Universities\\Universities.csproj",
       "projectName": "Universities",
-      "projectPath": "E:\\repos\\Universities\\Universities\\Universities.csproj",
+      "projectPath": "E:\\Projects\\Universities\\Universities\\Universities.csproj",
       "packagesPath": "C:\\Users\\moham\\.nuget\\packages\\",
-      "outputPath": "E:\\repos\\Universities\\Universities\\obj\\",
+      "outputPath": "E:\\Projects\\Universities\\Universities\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -4756,7 +4756,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.100"
+      "SdkAnalysisLevel": "9.0.200"
     },
     "frameworks": {
       "net8.0": {
@@ -4828,7 +4828,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

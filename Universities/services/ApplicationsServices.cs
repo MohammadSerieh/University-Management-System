@@ -73,10 +73,7 @@ namespace Universities.services
             return await iapplicationrepositry.deleteApplication(appno);
         }
 
-        public async Task<List<UniversityApplicationSummaryDto>> GetUniversityDataAsync()
-        {
-            return await this.ilookuprepositry.GetUniversityDataAsync();
-        }
+        
 
 
     }
